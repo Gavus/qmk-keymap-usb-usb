@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# shellcheck disable=2164,2103
+
+qmk="qmk_firmware"
+keymap_name="gustav"
+
+function cpkeymap {
+	local keymap="keymap.c"
+	local keymap_path="$qmk/keyboards/converter/usb_usb/keymaps/$keymap_name"
+
+	echo "Copy keymap to $keymap_path"
+	mkdir -p "$keymap_path"
+	cp -f "$keymap" "$keymap_path"
+}
+
+function clone {
+	local qmk_url="https://github.com/qmk/$qmk.git"
+	local qmk_tag="0.19.1"
+
+	if test ! -d "$qmk"; then
+		git clone --depth 1 -b "$qmk_tag" "$qmk_url" "$qmk"
+		git -C "$qmk" submodule update --init --depth 1 lib/lufa
+	else
+		echo "$qmk already cloned"
+	fi
+}
+
+function pullimage {
+	local image="docker.io/qmkfm/qmk_cli:latest"
+	local cont_mgr=""
+
+	if command -v docker >/dev/null 2>&1; then
+		cont_mgr="docker"
+	elif command -v podman >/dev/null 2>&1; then
+		cont_mgr="podman"
+	else
+		2>&1 echo "Error: no compatible container runtime found."
+		2>&1 echo "Please install podman or docker."
+		return 1
+	fi
+
+	"$cont_mgr" pull "$image"
+}
+
+function build {
+	local keyboard="converter/usb_usb/hasu"
+
+	clone
+	cpkeymap
+
+	bash -c "cd $qmk && ./util/docker_build.sh $keyboard:$keymap_name"
+}
