@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|     ,---.     |---------------| |-------|
      * |Shi<|  <|  Z|  X|  C|  V|  B|  N|  M|  ,|  ,|  /| RO|Shift |     |Up |     |  1|  2|  3|KP=| |Exe|Pst|
      * |-----------------------------------------------------------| ,-----------. |---------------| |-------|
-     * |Ctl|Gui|Alt|MHEN|HNJ| SpacFN |H/E|HENK|KANA|Alt|Gui|App|Ctl| |Lef|Dow|Rig| |  0    |  .|Ent| |Fnd|Cut|
+     * |CEsc|Gui|Alt|MHEN|HNJ| SpcFN |H/E|HENK|KANA|Alt|Gui|App|Ctl| |Lef|Dow|Rig| |  0    |  .|Ent| |Fnd|Cut|
      * `-----------------------------------------------------------' `-----------' `---------------' `-------'
      */
     [_QWERTY] = LAYOUT_all(
@@ -80,15 +80,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,          KC_BSLS,     KC_DEL,  KC_END,  KC_PGDN,    KC_P7,   KC_P8,   KC_P9,   KC_PPLS,    KC_MENU, KC_UNDO,
     CTL_ESC, KC_A,    KC_S,    KC_D,    LT_F,    KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_NUHS, KC_ENT,                                    KC_P4,   KC_P5,   KC_P6,   KC_PCMM,    KC_SLCT, KC_COPY,
     SFL_NUB, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,   KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_INT1, KC_RSFT,              KC_UP,               KC_P1,   KC_P2,   KC_P3,   KC_PEQL,    KC_EXEC, KC_PSTE,
-    KC_LCTL, KC_LGUI, KC_LALT, KC_INT5, KC_LNG2,         LT_SPC,         KC_LNG1, KC_INT4, KC_INT2, KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,     KC_LEFT, KC_DOWN, KC_RGHT,    KC_P0,            KC_PDOT, KC_PENT,    KC_FIND, KC_CUT
+    CTL_ESC, KC_LGUI, KC_LALT, KC_INT5, KC_LNG2,         LT_SPC,         KC_LNG1, KC_INT4, KC_INT2, KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,     KC_LEFT, KC_DOWN, KC_RGHT,    KC_P0,            KC_PDOT, KC_PENT,    KC_FIND, KC_CUT
     ),
     [_SPACE] = LAYOUT_all(
                       ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______,
     ______,           ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______,             ______,______,______,    ______,______,______,______,    ______,
-    ______,  ______,  ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______, ______,     ______,______,______,    ______,______,______,______,    ______,______,
+    ______,  ______,  ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______, KC_DEL,     ______,______,______,    ______,______,______,______,    ______,______,
     ______,  KC_1,    KC_2,    KC_3,    KC_4,   KC_5,   KC_6,    KC_7,    KC_8,   KC_9,    KC_0,   KC_MINS,______,         ______,     ______,______,______,    ______,______,______,______,    ______,______,
     ______,  LS_1,    LS_2,    LS_3,    LS_4,   LS_5,   LS_6,    LS_7,    LS_8,   LS_9,    LS_0,   LS_MINS,        ______, ______,                              ______,______,______,______,    ______,______,
-    ______,  RA_NUBS, RA_1,    RA_2,    RA_3,   RA_4,   RA_5,    RA_6,    RA_7,   RA_8,    RA_9,   RA_0,           RA_MINS,RA_EQL,            ______,           ______,______,______,______,    ______,______, KC_LGUI, _______, ______,  ______,  ______,         ______,           ______, ______,  ______, ______, ______, ______, ______,     ______,______,______,    ______,       ______,______,    ______,______
+    RA_NUBS, RA_NUBS, RA_1,    RA_2,    RA_3,   RA_4,   RA_5,    RA_6,    RA_7,   RA_8,    RA_9,   RA_0,           RA_MINS,RA_EQL,            ______,           ______,______,______,______,    ______,______,
+    KC_LGUI, _______, ______,  ______,  ______,         ______,           ______, ______,  ______, ______, ______, ______, ______,     ______,______,______,    ______,       ______,______,    ______,______
     ),
     [_ADJUST] = LAYOUT_all(
                       ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______,
