@@ -16,7 +16,7 @@ function cpkeymap {
 
 function clone {
 	local qmk_url="https://github.com/qmk/$qmk.git"
-	local qmk_tag="0.19.1"
+	local qmk_tag="0.19.12"
 
 	if test ! -d "$qmk"; then
 		git clone --depth 1 -b "$qmk_tag" "$qmk_url" "$qmk"
@@ -30,10 +30,10 @@ function pullimage {
 	local image="docker.io/qmkfm/qmk_cli:latest"
 	local cont_mgr=""
 
-	if command -v docker >/dev/null 2>&1; then
-		cont_mgr="docker"
-	elif command -v podman >/dev/null 2>&1; then
+	if command -v podman >/dev/null 2>&1; then
 		cont_mgr="podman"
+	elif command -v docker >/dev/null 2>&1; then
+		cont_mgr="docker"
 	else
 		2>&1 echo "Error: no compatible container runtime found."
 		2>&1 echo "Please install podman or docker."
